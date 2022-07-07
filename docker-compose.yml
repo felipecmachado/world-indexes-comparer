@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+ 
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    command: 
+        - --default-authentication-plugin=mysql_native_password
+        - --sql_mode=
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=WorldData
+      - MYSQL_PASSWORD=this-is-a-password
+      - MYSQL_USER=admin
+      - MYSQL_ROOT_PASSWORD=123456
+    restart: always
+    networks:
+      - world-indexes-network
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./Scripts:/docker-entrypoint-initdb.d
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+volumes:
+  dbdata:
+    external: false
+
+networks:
+  world-indexes-network:
+    driver: bridge
