@@ -4,7 +4,7 @@ namespace RestCountries.Client
 {
     public interface IRestCountriesClient
     {
-        Task<Country> GetCountry(string name);
-        Task<IList<Country>> GetAllCountries();
+        Task<CountryResult> GetCountryAsync(string name);
+        Task<IList<CountryResult>> GetAllCountriesAsync();
     }
 }

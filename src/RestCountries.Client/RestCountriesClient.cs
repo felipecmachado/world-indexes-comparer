@@ -18,21 +18,21 @@ namespace RestCountries.Client
             _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
         }
 
-        public async Task<IList<Country>> GetAllCountries()
+        public async Task<IList<CountryResult>> GetAllCountriesAsync()
         {
             var url = $"all";
 
-            var response = await GetAsync<IList<Country>>(url)
+            var response = await GetAsync<IList<CountryResult>>(url)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return response;
         }
 
-        public async Task<Country> GetCountry(string name)
+        public async Task<CountryResult> GetCountryAsync(string name)
         {
             var url = $"name/{name}";
 
-            var response = await GetAsync<IList<Country>>(url)
+            var response = await GetAsync<IList<CountryResult>>(url)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return response.FirstOrDefault();
