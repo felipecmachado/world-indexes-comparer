@@ -1,6 +1,6 @@
 ﻿namespace RestCountries.Client.Models
 {
-    public class CountryName
+    public class CountryNameResult
     {
         public string Common { get; set; }
         public string Official { get; set; }

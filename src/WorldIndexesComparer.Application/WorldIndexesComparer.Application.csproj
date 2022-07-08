@@ -7,4 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Covid19.Client\Covid19.Client.csproj" />
+    <ProjectReference Include="..\Econdb.Client\Econdb.Client.csproj" />
+    <ProjectReference Include="..\RestCountries.Client\RestCountries.Client.csproj" />
+    <ProjectReference Include="..\WorldIndexesComparer.Domain\WorldIndexesComparer.Domain.csproj" />
+    <ProjectReference Include="..\WorldIndexesComparer.Infrastructure.Data\WorldIndexesComparer.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\WorldIndexesComparer.Infrastructure\WorldIndexesComparer.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
