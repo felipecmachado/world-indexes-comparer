@@ -28,7 +28,7 @@ namespace RestCountries.Client
             return response;
         }
 
-        public async Task<CountryResult> GetCountryAsync(string name)
+        public async Task<CountryResult> GetCountry(string name)
         {
             var url = $"name/{name}";
 

@@ -16,11 +16,11 @@ namespace WorldIndexesComparer.Tests.Application.Services
 {
     public class CountriesProcessingServiceTests
     {
-        private readonly Mock<ILogger<CountriesProcessingService>> _mockLogger;
+        private readonly Mock<ILogger<CountriesProcessingAppService>> _mockLogger;
         private readonly Mock<IUnitOfWork> _mockUnitOfWork;
         private readonly Mock<IRestCountriesClient> _mockRestCountriesClient;
 
-        private readonly CountriesProcessingService _countriesProcessingService;
+        private readonly CountriesProcessingAppService _countriesProcessingService;
 
         public CountriesProcessingServiceTests()
         {
@@ -36,9 +36,9 @@ namespace WorldIndexesComparer.Tests.Application.Services
             // Arrange
 
             // Act
-            Action actionLoggerNull = () => _ = new CountriesProcessingService(null, _mockUnitOfWork.Object, _mockRestCountriesClient.Object);
-            Action actionUnitOfWorkNull = () => _ = new CountriesProcessingService(_mockLogger.Object, null, _mockRestCountriesClient.Object);
-            Action actionRestCountriesClientNull = () => _ = new CountriesProcessingService(_mockLogger.Object, _mockUnitOfWork.Object, null);
+            Action actionLoggerNull = () => _ = new CountriesProcessingAppService(null, _mockUnitOfWork.Object, _mockRestCountriesClient.Object);
+            Action actionUnitOfWorkNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, null, _mockRestCountriesClient.Object);
+            Action actionRestCountriesClientNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, _mockUnitOfWork.Object, null);
 
             // Assert
             actionLoggerNull.Should().Throw<ArgumentNullException>();

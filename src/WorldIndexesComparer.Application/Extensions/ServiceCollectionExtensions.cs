@@ -13,7 +13,7 @@ namespace WorldIndexesComparer.Application.Extensions
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddTransient<ICountriesProcessingService, CountriesProcessingService>();
+            services.AddTransient<ICountriesProcessingAppService, CountriesProcessingAppService>();
 
             return services;
         }

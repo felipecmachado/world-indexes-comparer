@@ -7,13 +7,13 @@ using WorldIndexesComparer.Domain.Countries;
 
 namespace WorldIndexesComparer.Application.Services
 {
-    public class CountriesProcessingService : ICountriesProcessingService
+    public class CountriesProcessingAppService : ICountriesProcessingAppService
     {
-        private readonly ILogger<CountriesProcessingService> _logger;
+        private readonly ILogger<CountriesProcessingAppService> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRestCountriesClient _restCountriesClient;
 
-        public CountriesProcessingService(ILogger<CountriesProcessingService> logger, IUnitOfWork unitOfWork, IRestCountriesClient restCountriesClient)
+        public CountriesProcessingAppService(ILogger<CountriesProcessingAppService> logger, IUnitOfWork unitOfWork, IRestCountriesClient restCountriesClient)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
@@ -34,7 +34,7 @@ namespace WorldIndexesComparer.Application.Services
                 {
                     stoppingToken.ThrowIfCancellationRequested();
 
-                    var existingCountry = existingCountries.FirstOrDefault(c => c.CountryCode == country.CCA3);
+                    var existingCountry = existingCountries.FirstOrDefault(c => c.CCA3 == country.CCA3);
 
                     await SaveOrUpdateAsync(country, existingCountry)
                         .ConfigureAwait(continueOnCapturedContext: false);
@@ -66,9 +66,8 @@ namespace WorldIndexesComparer.Application.Services
 
             if (existingCountry is null)
             {
-                var newCountry = Country.New()
-                    .SetName(country.Name.Common)
-                    .SetCountryCode(country.CCA3)
+                var newCountry = Country
+                    .New(country.Name.Official, country.CCA2, country.CCA3)
                     .SetPopulation(country.Population);
 
                 repo.Add(newCountry);

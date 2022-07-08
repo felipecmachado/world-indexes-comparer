@@ -1,13 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-WorldIndexesComparer.BackgroundServices-80A29E15-9F53-4358-95B4-06D1FE5E099F</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cronos" Version="0.7.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Covid19.Client\Covid19.Client.csproj" />
+    <ProjectReference Include="..\Econdb.Client\Econdb.Client.csproj" />
+    <ProjectReference Include="..\RestCountries.Client\RestCountries.Client.csproj" />
+    <ProjectReference Include="..\WorldIndexesComparer.Application\WorldIndexesComparer.Application.csproj" />
+    <ProjectReference Include="..\WorldIndexesComparer.Infrastructure.Data\WorldIndexesComparer.Infrastructure.Data.csproj" />
   </ItemGroup>
 </Project>

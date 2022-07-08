@@ -1,6 +1,6 @@
 ﻿namespace WorldIndexesComparer.Application.Services.Interfaces
 {
-    public interface ICountriesProcessingService : IDisposable
+    public interface ICountriesProcessingAppService : IDisposable
     {
         Task SyncAllCountriesAsync(CancellationToken stoppingToken);
     }

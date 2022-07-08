@@ -1,14 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+    <PropertyGroup>
+	    <TargetFramework>net6.0</TargetFramework>
+	    <ImplicitUsings>enable</ImplicitUsings>
+	    <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\RestCountries.Client\RestCountries.Client.csproj" />
-	  <ProjectReference Include="..\WorldIndexesComparer.Infrastructure.Data\WorldIndexesComparer.Infrastructure.Data.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Covid19.Client\Covid19.Client.csproj" />
+        <ProjectReference Include="..\Econdb.Client\Econdb.Client.csproj" />
+        <ProjectReference Include="..\RestCountries.Client\RestCountries.Client.csproj" />
+        <ProjectReference Include="..\WorldIndexesComparer.Domain\WorldIndexesComparer.Domain.csproj" />
+        <ProjectReference Include="..\WorldIndexesComparer.Infrastructure.Data\WorldIndexesComparer.Infrastructure.Data.csproj" />
+        <ProjectReference Include="..\WorldIndexesComparer.Infrastructure\WorldIndexesComparer.Infrastructure.csproj" />
+    </ItemGroup>
 
 </Project>

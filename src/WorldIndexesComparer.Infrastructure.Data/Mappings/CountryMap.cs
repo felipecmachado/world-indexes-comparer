@@ -16,7 +16,11 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
                 .IsRequired()
                 .HasMaxLength(256);
 
-            builder.Property(x => x.CountryCode)
+            builder.Property(x => x.CCA2)
+                .IsRequired()
+                .HasMaxLength(2);
+
+            builder.Property(x => x.CCA3)
                 .IsRequired()
                 .HasMaxLength(3);
 
