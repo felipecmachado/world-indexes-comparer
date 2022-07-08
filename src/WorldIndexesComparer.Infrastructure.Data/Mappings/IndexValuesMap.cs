@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WorldIndexesComparer.Domain.Indexes;
 
 namespace WorldIndexesComparer.Infrastructure.Data.Mappings
 {
-    using Index = Domain.Indexes.Index;
-    using WorldIndexesComparer.Domain.Indexes;
-
     public class IndexValueMap : IEntityTypeConfiguration<IndexValue>
     {
         public void Configure(EntityTypeBuilder<IndexValue> builder)
