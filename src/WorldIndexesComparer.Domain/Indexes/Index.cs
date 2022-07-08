@@ -1,12 +1,16 @@
-﻿namespace WorldIndexesComparer.Domain.Indexes
+﻿using WorldIndexesComparer.Domain.Countries;
+
+namespace WorldIndexesComparer.Domain.Indexes
 {
     public class Index
     {
-        public long Id { get; set; }
-        public Guid CountryId { get; set; }
-        public IndexType Type { get; set; }
-        public Periodicity Periodicity { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Value { get; set; }
+        public long Id { get; private set; }
+        public Guid? CountryId { get; private set; }
+        public string Name { get; private set; }
+        public IndexType Type { get; private set; }
+        public Periodicity Periodicity { get; private set; }
+        public DateTime LastUpdatedAt { get; private set; }
+
+        public ICollection<IndexValue> Values { get; set; } = new List<IndexValue>();
     }
 }
