@@ -34,20 +34,7 @@ namespace WorldIndexesComparer.Infrastructure.Data.Modules
             services.AddUnitOfWork();
             services.AddUnitOfWork<WorldDataContext>();
 
-            services.EnsureDatabaseIsCreated();
-
             return services;
-        }
-
-        private static void EnsureDatabaseIsCreated(this IServiceCollection services)
-        {
-            var serviceScopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
-
-            using var serviceScope = serviceScopeFactory.CreateScope();
-            using var dbContext = serviceScope.ServiceProvider.GetService<WorldDataContext>();
-
-            dbContext.Database.EnsureDeleted();
-            dbContext.Database.EnsureCreated();
         }
     }
 }
