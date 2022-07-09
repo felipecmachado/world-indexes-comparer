@@ -1,4 +1,4 @@
-﻿namespace WorldIndexesComparer.Application.Coronavirus.Services.Interfaces
+﻿namespace WorldIndexesComparer.Application.Services.Interfaces
 {
     public interface ICoronavirusDataProcessingAppService : IDisposable
     {

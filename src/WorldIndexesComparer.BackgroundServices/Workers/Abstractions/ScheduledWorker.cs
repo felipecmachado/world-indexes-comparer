@@ -34,7 +34,7 @@ namespace WorldIndexesComparer.BackgroundServices.Workers.Abstractions
                 var nextRun = Expression.GetNextOccurrence(DateTimeOffset.UtcNow, TimeZoneInfo);
                 var delay = nextRun.Value - DateTimeOffset.UtcNow;
 
-                Logger.LogInformation("Next occurrence in {delay:c}.", delay);
+                Logger.LogInformation("{Job} next occurrence at {NextRun} (in {delay:c}).", ServiceName, nextRun, delay);
 
                 await Task.Delay(delay, stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
 

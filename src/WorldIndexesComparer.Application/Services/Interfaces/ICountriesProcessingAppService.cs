@@ -1,4 +1,4 @@
-﻿namespace WorldIndexesComparer.Application.Countries.Services.Interfaces
+﻿namespace WorldIndexesComparer.Application.Services.Interfaces
 {
     public interface ICountriesProcessingAppService : IDisposable
     {

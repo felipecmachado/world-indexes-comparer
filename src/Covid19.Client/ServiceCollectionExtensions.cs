@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Polly;
-using Polly.Extensions.Http;
 using System.Net.Http.Headers;
+using WorldIndexesComparer.Common.Http.Policies;
 
 namespace Covid19.Client
 {
@@ -19,9 +18,11 @@ namespace Covid19.Client
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddHttpClient<ICovid19Client, Covid19Client>(configureClient: httpClient => ConfigureClient(httpClient, baseUri, timeout))
-                .AddPolicyHandler(GetDefaultRetryPolicy(maxRetryAttempts))
-                .AddPolicyHandler(GetDefaultCircuitBreakerPolicy(maxConsecutiveFailures, maxCircuitBreakerWaitingTime));
+            services.AddHttpClient(nameof(ICoronavirusClient), configureClient: httpClient => ConfigureClient(httpClient, baseUri, timeout))
+                .AddPolicyHandler(PollyPolicies.GetDefaultRetryPolicy(maxRetryAttempts))
+                .AddPolicyHandler(PollyPolicies.GetDefaultCircuitBreakerPolicy(maxConsecutiveFailures, maxCircuitBreakerWaitingTime));
+
+            services.AddScoped<ICoronavirusClient, CoronavirusClient>();
 
             return services;
         }
@@ -36,19 +37,5 @@ namespace Covid19.Client
                 httpClient.Timeout = timeout.Value;
             }
         }
-
-        private static IAsyncPolicy<HttpResponseMessage> GetDefaultRetryPolicy(int maxRequestAttempt)
-            => HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .WaitAndRetryAsync(maxRequestAttempt, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
-
-        private static IAsyncPolicy<HttpResponseMessage> GetDefaultCircuitBreakerPolicy(int maxConsecutiveFailures, int maxCircuitBreakerWaitingTime)
-            => HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .CircuitBreakerAsync(
-                    handledEventsAllowedBeforeBreaking: maxConsecutiveFailures,
-                    durationOfBreak: TimeSpan.FromSeconds(maxCircuitBreakerWaitingTime),
-                    onBreak: (delegateResult, timeSpan, context) => { },
-                    onReset: (context) => { });
     }
 }

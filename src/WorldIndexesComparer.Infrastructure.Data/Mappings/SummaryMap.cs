@@ -13,8 +13,7 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
             builder.HasKey(x => x.Id);
 
             // Properties
-            builder.Property(x => x.LastReceivedDate)
-                .IsRequired();
+            builder.Property(x => x.LastReceivedDate);
 
             builder.Ignore(x => x.TotalCasesPerMillion);
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WorldIndexesComparer.Application.Countries.Services;
-using WorldIndexesComparer.Application.Countries.Services.Interfaces;
+using WorldIndexesComparer.Application.Services;
+using WorldIndexesComparer.Application.Services.Interfaces;
 
 namespace WorldIndexesComparer.Application.Extensions
 {
@@ -14,6 +14,7 @@ namespace WorldIndexesComparer.Application.Extensions
             }
 
             services.AddTransient<ICountriesProcessingAppService, CountriesProcessingAppService>();
+            services.AddTransient<ICoronavirusDataProcessingAppService, CoronavirusDataProcessingAppService>();
 
             return services;
         }

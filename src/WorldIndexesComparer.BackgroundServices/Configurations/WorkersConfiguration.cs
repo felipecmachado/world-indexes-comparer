@@ -27,13 +27,13 @@ namespace WorldIndexesComparer.BackgroundServices.Configurations
                 c.CronExpression = @"0 6 * * *"; // every day at 6AM
             });
 
-            //services.AddScheduledJob<CoronavirusDataCollectionWorker>(c =>
-            //{
-            //    c.TimeZoneInfo = TimeZoneInfo.Local;
-            //    c.ShouldRunOnStartup = true;
-            //    c.CronExpression = @"*/30 * * * *"; // every 30 minutes
-            //});
-            
+            services.AddScheduledWorker<CoronavirusDataCollectionWorker>(c =>
+            {
+                c.TimeZoneInfo = TimeZoneInfo.Local;
+                c.ShouldRunOnStartup = true;
+                c.CronExpression = @"*/1 * * * *"; // every 5 minutes
+            });
+
             //services.AddScheduledJob<ConsumerPriceIndexDataCollectionWorker>(c =>
             //{
             //    c.TimeZoneInfo = TimeZoneInfo.Local;

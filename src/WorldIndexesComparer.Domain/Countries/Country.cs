@@ -10,6 +10,7 @@ namespace WorldIndexesComparer.Domain.Countries
         public string Name { get; private set; }
         public string CCA2 { get; private set; }
         public string CCA3 { get; private set; }
+        public string Slug { get; private set; }
         public int Population { get; private set; }
         public string Continent { get; private set; }
 
@@ -39,6 +40,18 @@ namespace WorldIndexesComparer.Domain.Countries
             }
 
             Name = name;
+
+            return this;
+        }
+
+        public Country SetSlug(string slug)
+        {
+            if (string.IsNullOrEmpty(slug))
+            {
+                throw new ArgumentException(nameof(slug));
+            }
+
+            Slug = slug;
 
             return this;
         }
@@ -85,7 +98,7 @@ namespace WorldIndexesComparer.Domain.Countries
             return this;
         }
 
-        public Country UpdatePopulation(int population)
+        public void UpdatePopulation(int population)
         {
             if (population < 0)
             {
@@ -96,8 +109,6 @@ namespace WorldIndexesComparer.Domain.Countries
             ModifiedAt = DateTime.UtcNow;
 
             AddDomainEvent(new CountrySynchronizedDomainEvent(this));
-
-            return this;
         }
     }
 }
