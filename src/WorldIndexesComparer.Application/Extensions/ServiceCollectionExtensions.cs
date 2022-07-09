@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WorldIndexesComparer.Application.Services;
-using WorldIndexesComparer.Application.Services.Interfaces;
+using WorldIndexesComparer.Application.Countries.Services;
+using WorldIndexesComparer.Application.Countries.Services.Interfaces;
 
 namespace WorldIndexesComparer.Application.Extensions
 {
