@@ -1,24 +1,28 @@
-﻿using MediatR;
+﻿using Covid19.Client;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using RestCountries.Client;
-using WorldIndexesComparer.Application.Countries.Services.Interfaces;
+using WorldIndexesComparer.Application.Services.Interfaces;
 using WorldIndexesComparer.Domain.Countries.Commands;
 
-namespace WorldIndexesComparer.Application.Countries.Services
+namespace WorldIndexesComparer.Application.Services
 {
     public class CountriesProcessingAppService : ICountriesProcessingAppService
     {
         private readonly ILogger<CountriesProcessingAppService> _logger;
         private readonly IRestCountriesClient _restCountriesClient;
+        private readonly ICoronavirusClient _coronavirusClient;
         private readonly IMediator _mediator;
 
         public CountriesProcessingAppService(
             ILogger<CountriesProcessingAppService> logger, 
             IRestCountriesClient restCountriesClient,
+            ICoronavirusClient coronavirusClient,
             IMediator mediator)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _restCountriesClient = restCountriesClient ?? throw new ArgumentNullException(nameof(restCountriesClient));
+            _coronavirusClient = coronavirusClient ?? throw new ArgumentNullException(nameof(coronavirusClient));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
@@ -29,9 +33,14 @@ namespace WorldIndexesComparer.Application.Countries.Services
                 var countries = await _restCountriesClient.GetAllCountriesAsync()
                     .ConfigureAwait(continueOnCapturedContext: false);
 
+                var slugs = await _coronavirusClient.GetCountriesSlugs()
+                    .ConfigureAwait(continueOnCapturedContext: false);
+
                 foreach (var country in countries)
                 {
                     stoppingToken.ThrowIfCancellationRequested();
+
+                    var slug = slugs.FirstOrDefault(x => x.ISO2 == country.CCA2)?.Slug;
 
                     var command = new SynchronizeCountryCommand()
                     {
@@ -39,6 +48,7 @@ namespace WorldIndexesComparer.Application.Countries.Services
                         OfficialName = country.Name.Official,
                         CCA2 = country.CCA2,
                         CCA3 = country.CCA3,
+                        Slug = slug,
                         Population = country.Population
                     };
 

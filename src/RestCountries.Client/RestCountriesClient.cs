@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using RestCountries.Client.Models;
+using System.Net.Http;
 using WorldIndexesComparer.Common.Http;
 
 namespace RestCountries.Client

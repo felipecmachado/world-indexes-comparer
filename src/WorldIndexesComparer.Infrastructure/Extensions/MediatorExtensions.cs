@@ -7,6 +7,10 @@ public static class MediatorExtensions
 {
     public static async Task DispatchDomainEventsAsync(this IMediator mediator, Entity entity, CancellationToken cancellationToken)
     {
+        if (entity.DomainEvents is null || !entity.DomainEvents.Any())
+        {
+            return;
+        }
 
         foreach (var @event in entity.DomainEvents)
         {

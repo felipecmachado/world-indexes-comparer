@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Polly;
-using Polly.Extensions.Http;
 using System.Net.Http.Headers;
+using WorldIndexesComparer.Common.Http.Policies;
 
 namespace RestCountries.Client
 {
@@ -20,8 +19,8 @@ namespace RestCountries.Client
             }
 
             services.AddHttpClient(nameof(IRestCountriesClient), configureClient: httpClient => ConfigureClient(httpClient, baseUri, timeout))
-                .AddPolicyHandler(GetDefaultRetryPolicy(maxRetryAttempts))
-                .AddPolicyHandler(GetDefaultCircuitBreakerPolicy(maxConsecutiveFailures, maxCircuitBreakerWaitingTime));
+                .AddPolicyHandler(PollyPolicies.GetDefaultRetryPolicy(maxRetryAttempts))
+                .AddPolicyHandler(PollyPolicies.GetDefaultCircuitBreakerPolicy(maxConsecutiveFailures, maxCircuitBreakerWaitingTime));
 
             services.AddScoped<IRestCountriesClient, RestCountriesClient>();
 
@@ -38,19 +37,5 @@ namespace RestCountries.Client
                 httpClient.Timeout = timeout.Value;
             }
         }
-
-        private static IAsyncPolicy<HttpResponseMessage> GetDefaultRetryPolicy(int maxRequestAttempt)
-            => HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .WaitAndRetryAsync(maxRequestAttempt, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
-
-        private static IAsyncPolicy<HttpResponseMessage> GetDefaultCircuitBreakerPolicy(int maxConsecutiveFailures, int maxCircuitBreakerWaitingTime)
-            => HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .CircuitBreakerAsync(
-                    handledEventsAllowedBeforeBreaking: maxConsecutiveFailures,
-                    durationOfBreak: TimeSpan.FromSeconds(maxCircuitBreakerWaitingTime),
-                    onBreak: (delegateResult, timeSpan, context) => { },
-                    onReset: (context) => { });
     }
 }

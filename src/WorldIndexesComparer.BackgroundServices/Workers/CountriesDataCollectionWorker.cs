@@ -1,4 +1,4 @@
-using WorldIndexesComparer.Application.Countries.Services.Interfaces;
+using WorldIndexesComparer.Application.Services.Interfaces;
 using WorldIndexesComparer.BackgroundServices.Workers.Abstractions;
 
 namespace WorldIndexesComparer.BackgroundServices.Workers

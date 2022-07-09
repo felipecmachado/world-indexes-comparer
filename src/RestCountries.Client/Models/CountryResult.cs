@@ -4,6 +4,7 @@ namespace RestCountries.Client.Models
 {
     public class CountryResult
     {
+        [JsonPropertyName("name")]
         public CountryNameResult Name { get; set; }
 
         [JsonPropertyName("cca2")]
@@ -12,6 +13,7 @@ namespace RestCountries.Client.Models
         [JsonPropertyName("cca3")]
         public string CCA3 { get; set; }
 
+        [JsonPropertyName("population")]
         public int Population { get; set; }
     }
 }

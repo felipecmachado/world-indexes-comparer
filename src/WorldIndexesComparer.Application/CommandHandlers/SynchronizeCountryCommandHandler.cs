@@ -30,6 +30,11 @@ namespace WorldIndexesComparer.Application.Countries.CommandHandlers
                     .New(request.OfficialName, request.CCA2, request.CCA3)
                     .SetPopulation(request.Population);
 
+                if (!string.IsNullOrEmpty(request.Slug))
+                {
+                    country.SetSlug(request.Slug);
+                }
+
                 repo.Add(country);
             }
             else

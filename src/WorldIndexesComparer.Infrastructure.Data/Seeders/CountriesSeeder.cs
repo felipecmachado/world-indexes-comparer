@@ -8,9 +8,9 @@ namespace WorldIndexesComparer.Infrastructure.Data.Seeders
         {
             var countries = new List<Country>()
             {
-                Country.New("Brazil", "BR", "BRA"),
-                Country.New("Canada", "CA", "CAN"),
-                Country.New("United States", "US", "USA")
+                Country.New("Brazil", "BR", "BRA").SetSlug("brazil"),
+                Country.New("Canada", "CA", "CAN").SetSlug("canada"),
+                Country.New("United States of America", "US", "USA").SetSlug("united-states")
             };
 
             return countries;
