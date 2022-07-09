@@ -22,20 +22,20 @@ This is a project created with the solely purpose of applying several topics tha
 
 ### Technologies and patterns used
 
-[x] NET 6
-[x] Rich domain model using DDD (Domain Driven Design)
-[x] CQRS (Command Query Responsibility Segregation pattern)
-[x] ASP.NET WebAPI
-[x] Background workers using cron expressions
-[x] EntityFrameworkCore
-[x] FluentValidation
-[x] MediatR
-[] AutoMapper
-[x] MySql
-[x] Docker
-[ ] Redis
-[x] Apache Kafka
-[ ] Unit tests using AAA pattern (Arrange, Act, Assert): https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022
+- [x] NET 6
+- [x] Rich domain model using DDD (Domain Driven Design)
+- [x] CQRS (Command Query Responsibility Segregation pattern)
+- [x] ASP.NET WebAPI
+- [x] Background workers using cron expressions
+- [x] EntityFrameworkCore
+- [x] FluentValidation
+- [x] MediatR
+- [ ] AutoMapper
+- [x] MySql
+- [x] Docker (including docker-compose)
+- [ ] Redis
+- [x] Apache Kafka
+- [ ] Unit tests using AAA pattern (Arrange, Act, Assert): https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022
 
 ### Getting started
 
