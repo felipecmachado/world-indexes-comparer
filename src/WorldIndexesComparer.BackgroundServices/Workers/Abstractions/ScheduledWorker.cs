@@ -68,11 +68,11 @@ namespace WorldIndexesComparer.BackgroundServices.Workers.Abstractions
             {
                 if (unhandledException != null)
                 {
-                    Logger.LogError(unhandledException, "{JobName} has ended unsuccessfully. Time taken: {Elapsed}s.", ServiceName, stopwatch.Elapsed.TotalSeconds);
+                    Logger.LogError(unhandledException, "{JobName} has ended unsuccessfully. Time taken: {Elapsed:0.00}s.", ServiceName, stopwatch.Elapsed.TotalSeconds);
                 }
                 else
                 {
-                    Logger.LogInformation("{JobName} has been successfully updated. Time taken: {Elapsed}s.", ServiceName, stopwatch.Elapsed.TotalSeconds);
+                    Logger.LogInformation("{JobName} has been successfully updated. Time taken: {Elapsed:0.00}s.", ServiceName, stopwatch.Elapsed.TotalSeconds);
                 }
 
                 scope?.Dispose();

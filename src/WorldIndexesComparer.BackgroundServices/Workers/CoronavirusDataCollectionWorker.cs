@@ -26,7 +26,7 @@ namespace WorldIndexesComparer.BackgroundServices.Workers
 
                 var service = scope.ServiceProvider.GetRequiredService<ICoronavirusDataProcessingAppService>();
 
-                await service.SyncAllCountriesAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
+                // await service.SyncAllCountriesAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
             }
             catch (Exception ex)
             {

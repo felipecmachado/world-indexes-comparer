@@ -1,4 +1,4 @@
-using WorldIndexesComparer.Application.Services.Interfaces;
+using WorldIndexesComparer.Application.Countries.Services.Interfaces;
 using WorldIndexesComparer.BackgroundServices.Workers.Abstractions;
 
 namespace WorldIndexesComparer.BackgroundServices.Workers
@@ -33,6 +33,5 @@ namespace WorldIndexesComparer.BackgroundServices.Workers
                 _logger.LogError(ex, "An error occurred while updating the countries.");
             }
         }
-
     }
 }
