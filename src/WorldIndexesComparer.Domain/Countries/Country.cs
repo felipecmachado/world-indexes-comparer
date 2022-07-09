@@ -1,6 +1,8 @@
-﻿namespace WorldIndexesComparer.Domain.Countries
+﻿using WorldIndexesComparer.Domain.Countries.Events;
+
+namespace WorldIndexesComparer.Domain.Countries
 {
-    public class Country
+    public class Country : Entity, IAggregateRoot
     {
         public Country() { }
 
@@ -9,19 +11,24 @@
         public string CCA2 { get; private set; }
         public string CCA3 { get; private set; }
         public int Population { get; private set; }
+        public string Continent { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
         public DateTime? ModifiedAt { get; private set; }
 
         public static Country New(string name, string cca2, string cca3)
         {
-            return new Country()
+            var country = new Country()
             {
                 Id = Guid.NewGuid(),
                 CreatedAt = DateTime.UtcNow
             }
             .SetName(name)
             .SetCountryCodes(cca2, cca3);
+
+            country.AddDomainEvent(new CountrySynchronizedDomainEvent(country));
+
+            return country;
         }
 
         public Country SetName(string name)
@@ -32,6 +39,18 @@
             }
 
             Name = name;
+
+            return this;
+        }
+
+        public Country SetContinent(string continent)
+        {
+            if (string.IsNullOrEmpty(continent))
+            {
+                throw new ArgumentException(nameof(continent));
+            }
+
+            Continent = continent;
 
             return this;
         }
@@ -75,6 +94,8 @@
 
             Population = population;
             ModifiedAt = DateTime.UtcNow;
+
+            AddDomainEvent(new CountrySynchronizedDomainEvent(this));
 
             return this;
         }

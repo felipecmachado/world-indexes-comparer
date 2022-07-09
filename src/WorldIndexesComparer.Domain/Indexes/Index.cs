@@ -1,4 +1,4 @@
-﻿using WorldIndexesComparer.Domain.Countries;
+﻿using WorldIndexesComparer.Domain.Indexes.Enums;
 
 namespace WorldIndexesComparer.Domain.Indexes
 {
