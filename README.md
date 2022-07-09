@@ -22,20 +22,21 @@ This is a project created with the solely purpose of applying several topics tha
 
 ### Technologies and patterns used
 
-- [x] NET 6
+- [x] [NET 6](https://docs.microsoft.com/pt-br/dotnet/core/whats-new/dotnet-6)
 - [x] Rich domain model using DDD (Domain Driven Design)
 - [x] CQRS (Command Query Responsibility Segregation pattern)
 - [x] ASP.NET WebAPI
-- [x] Background workers using cron expressions
+- [x] Background workers using [cron expressions](https://github.com/HangfireIO/Cronos)
 - [x] EntityFrameworkCore
+- [ ] UnitOfWork pattern using [EntityFrameworkCore.DataAccess library](https://github.com/ffernandolima/ef-core-data-access/tree/ef-core-6)
 - [x] FluentValidation
-- [x] MediatR
+- [x] [MediatR](https://github.com/jbogard/MediatR)
 - [ ] AutoMapper
 - [x] MySql
 - [x] Docker (including docker-compose)
 - [ ] Redis
 - [x] Apache Kafka
-- [ ] Unit tests using AAA pattern (Arrange, Act, Assert): https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022
+- [ ] Unit tests using AAA pattern ([Arrange, Act, Assert](https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022)): 
 
 ### Getting started
 
