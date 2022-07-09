@@ -1,4 +1,4 @@
-using WorldIndexesComparer.Application.Services.Interfaces;
+using WorldIndexesComparer.Application.Coronavirus.Services.Interfaces;
 using WorldIndexesComparer.BackgroundServices.Workers.Abstractions;
 
 namespace WorldIndexesComparer.BackgroundServices.Workers
