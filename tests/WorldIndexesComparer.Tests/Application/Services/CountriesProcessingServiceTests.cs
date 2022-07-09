@@ -1,15 +1,11 @@
-﻿using EntityFrameworkCore.UnitOfWork.Interfaces;
-using FluentAssertions;
+﻿using FluentAssertions;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Moq;
 using RestCountries.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using WorldIndexesComparer.Application.Services;
+using WorldIndexesComparer.Application.Countries.Services;
 using Xunit;
 
 namespace WorldIndexesComparer.Tests.Application.Services
@@ -17,7 +13,7 @@ namespace WorldIndexesComparer.Tests.Application.Services
     public class CountriesProcessingServiceTests
     {
         private readonly Mock<ILogger<CountriesProcessingAppService>> _mockLogger;
-        private readonly Mock<IUnitOfWork> _mockUnitOfWork;
+        private readonly Mock<IMediator> _mediator;
         private readonly Mock<IRestCountriesClient> _mockRestCountriesClient;
 
         private readonly CountriesProcessingAppService _countriesProcessingService;
@@ -25,9 +21,9 @@ namespace WorldIndexesComparer.Tests.Application.Services
         public CountriesProcessingServiceTests()
         {
             _mockLogger = new();
-            _mockUnitOfWork = new();
+            _mediator = new();
             _mockRestCountriesClient = new();
-            _countriesProcessingService = new(_mockLogger.Object, _mockUnitOfWork.Object, _mockRestCountriesClient.Object);
+            _countriesProcessingService = new(_mockLogger.Object, _mockRestCountriesClient.Object, _mediator.Object);
         }
 
         [Fact]
@@ -36,13 +32,13 @@ namespace WorldIndexesComparer.Tests.Application.Services
             // Arrange
 
             // Act
-            Action actionLoggerNull = () => _ = new CountriesProcessingAppService(null, _mockUnitOfWork.Object, _mockRestCountriesClient.Object);
-            Action actionUnitOfWorkNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, null, _mockRestCountriesClient.Object);
-            Action actionRestCountriesClientNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, _mockUnitOfWork.Object, null);
+            Action actionLoggerNull = () => _ = new CountriesProcessingAppService(null, _mockRestCountriesClient.Object, _mediator.Object);
+            Action actionMediatorNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, null, _mediator.Object);
+            Action actionRestCountriesClientNull = () => _ = new CountriesProcessingAppService(_mockLogger.Object, _mockRestCountriesClient.Object, null);
 
             // Assert
             actionLoggerNull.Should().Throw<ArgumentNullException>();
-            actionUnitOfWorkNull.Should().Throw<ArgumentNullException>();
+            actionMediatorNull.Should().Throw<ArgumentNullException>();
             actionRestCountriesClientNull.Should().Throw<ArgumentNullException>();
         }
 
