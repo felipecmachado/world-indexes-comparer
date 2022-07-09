@@ -16,6 +16,12 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
             builder.Property(x => x.LastReceivedDate)
                 .IsRequired();
 
+            builder.Ignore(x => x.TotalCasesPerMillion);
+
+            builder.Ignore(x => x.TotalDeathsPerMillion);
+
+            builder.Ignore(x => x.TotalRecoveredPerMillion);
+
             builder.HasOne<Country>()
                 .WithOne()
                 .IsRequired(false);
