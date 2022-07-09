@@ -35,7 +35,7 @@ This is a project created with the solely purpose of applying several topics tha
 - [x] MySql
 - [x] Docker (including docker-compose)
 - [ ] Redis
-- [x] Apache Kafka
+- [ ] Apache Kafka
 - [ ] Unit tests using AAA pattern ([Arrange, Act, Assert](https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022)): 
 
 ### Getting started
