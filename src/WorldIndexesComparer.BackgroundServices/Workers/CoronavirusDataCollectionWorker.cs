@@ -1,4 +1,4 @@
-using WorldIndexesComparer.Application.Services.Interfaces;
+using WorldIndexesComparer.Application.Coronavirus.Services.Interfaces;
 using WorldIndexesComparer.BackgroundServices.Workers.Abstractions;
 
 namespace WorldIndexesComparer.BackgroundServices.Workers
@@ -26,7 +26,7 @@ namespace WorldIndexesComparer.BackgroundServices.Workers
 
                 var service = scope.ServiceProvider.GetRequiredService<ICoronavirusDataProcessingAppService>();
 
-                await service.SyncAllCountriesAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
+                // await service.SyncAllCountriesAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
             }
             catch (Exception ex)
             {

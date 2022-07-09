@@ -1,8 +1,8 @@
 ﻿namespace WorldIndexesComparer.BackgroundServices.Workers.Abstractions
 {
-    public static class ScheduledServiceExtensions
+    public static class ScheduledWorkerExtensions
     {
-        public static IServiceCollection AddScheduledJob<T>(this IServiceCollection services, Action<ScheduleConfig<T>> options)
+        public static IServiceCollection AddScheduledWorker<T>(this IServiceCollection services, Action<ScheduleConfig<T>> options)
             where T : ScheduledWorker
         {
             if (options == null)

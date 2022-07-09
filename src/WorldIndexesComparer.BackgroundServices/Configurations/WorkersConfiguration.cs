@@ -20,7 +20,7 @@ namespace WorldIndexesComparer.BackgroundServices.Configurations
             /// For more information about the cron expressions
             /// you can visit the following repo: https://github.com/HangfireIO/Cronos
 
-            services.AddScheduledJob<CountriesDataCollectionWorker>(c =>
+            services.AddScheduledWorker<CountriesDataCollectionWorker>(c =>
             {
                 c.TimeZoneInfo = TimeZoneInfo.Local;
                 c.ShouldRunOnStartup = true;

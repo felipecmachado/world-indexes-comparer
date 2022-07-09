@@ -10,6 +10,7 @@ IHost host = Host.CreateDefaultBuilder(args)
             .AddAppServices()
             .AddClientsConfiguration(context.Configuration)
             .AddDataInfrastructure(context.Configuration)
+            .AddCQRSConfiguration()
             .AddWorkersConfiguration(context.Configuration);
 
         WorldDataInitializer.WorldDataContextInitializeAndSeed(services);

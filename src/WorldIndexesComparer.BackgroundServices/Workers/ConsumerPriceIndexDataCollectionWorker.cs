@@ -1,4 +1,3 @@
-using WorldIndexesComparer.Application.Services.Interfaces;
 using WorldIndexesComparer.BackgroundServices.Workers.Abstractions;
 
 namespace WorldIndexesComparer.BackgroundServices.Workers
@@ -24,9 +23,6 @@ namespace WorldIndexesComparer.BackgroundServices.Workers
             {
                 using var scope = _scopeFactory.CreateScope();
 
-                var service = scope.ServiceProvider.GetRequiredService<ICountriesProcessingAppService>();
-
-                await service.SyncAllCountriesAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,4 @@
-﻿namespace WorldIndexesComparer.Domain.Indexes
+﻿namespace WorldIndexesComparer.Domain.Indexes.Enums
 {
     public enum IndexType
     {

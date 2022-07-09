@@ -10,7 +10,14 @@
     <Folder Include="Diagnostics\HealthChecks\" />
     <Folder Include="Logging\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorldIndexesComparer.Domain\WorldIndexesComparer.Domain.csproj" />
   </ItemGroup>
 
 </Project>
