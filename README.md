@@ -6,13 +6,17 @@ This is a project created with the solely purpose of applying several topics tha
 
 ### Features
 
-- [x] Consume and save Countries data in a relational database using a scheduled job.
+- [x] Consume and save Countries data in a relational database using a scheduled job
 - [x] Consume and save Covid data in a relational database using a scheduled job.
 - [ ] Consume and save Inflation data in a relational database using a scheduled job.
 - [x] Provide API to compare effects after Covid-19 between selected countries.
 - [ ] Architecture documents like C4 Model and ADRs
 
-### Current Architecture
+### APIs that were used for data collection
+
+- [x] https://restcountries.com/
+- [x] https://github.com/M-Media-Group/Covid-19-API
+- [ ] https://publicapi.dev/econdb-api
 
 ### Architecture Decision Records
 
