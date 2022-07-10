@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace WorldIndexesComparer.Domain.Countries.Commands
+﻿namespace WorldIndexesComparer.Domain.Countries.Commands
 {
-    public class SynchronizeCountryCommand : IRequest<bool>
+    public class SynchronizeCountryCommand : ICommand<bool>
     {
         public string Name { get; set; }
         public string OfficialName { get; set; }

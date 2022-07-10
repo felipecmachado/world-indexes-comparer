@@ -1,12 +1,13 @@
 ﻿using EntityFrameworkCore.UnitOfWork.Interfaces;
 using MediatR;
+using WorldIndexesComparer.Domain;
 using WorldIndexesComparer.Domain.Countries;
 using WorldIndexesComparer.Domain.Countries.Commands;
 using WorldIndexesComparer.Infrastructure.Extensions;
 
 namespace WorldIndexesComparer.Application.Countries.CommandHandlers
 {
-    public class SynchronizeCountryCommandHandler : IRequestHandler<SynchronizeCountryCommand, bool>, IDisposable
+    public class SynchronizeCountryCommandHandler : ICommandHandler<SynchronizeCountryCommand, bool>, IDisposable
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMediator _mediator;

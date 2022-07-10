@@ -6,14 +6,14 @@
         public Guid CountryId { get; private set; }
         public string Slug { get; private set; }
         public int Population { get; private set; }
-        public DateOnly? LastReceivedDate { get; private set; }
+        public DateTime? LastReceivedDate { get; private set; }
         public int TotalCases { get; private set; }
         public int TotalDeaths { get; private set; }
         public int TotalRecovered { get; private set; }
 
-        public int TotalCasesPerMillion => (TotalCases / Population) * 1_000_000;
-        public int TotalDeathsPerMillion => (TotalDeaths / Population) * 1_000_000;
-        public int TotalRecoveredPerMillion => (TotalRecovered / Population) * 1_000_000;
+        public decimal TotalCasesPerMillion => (decimal)TotalCases / Population * 1_000_000;
+        public decimal TotalDeathsPerMillion => (decimal)TotalDeaths / Population * 1_000_000;
+        public decimal TotalRecoveredPerMillion => (decimal)TotalRecovered / Population * 1_000_000;
 
         public DateTime CreatedAt { get; private set; }
         public DateTime? LastUpdatedAt { get; private set; }
@@ -29,14 +29,14 @@
                 Population = population,
                 TotalCases = 0,
                 TotalDeaths = 0,
-                TotalRecovered= 0,
+                TotalRecovered = 0,
                 CreatedAt = DateTime.UtcNow
             };
 
             return summary;
         }
 
-        public void UpdateSummary(DateOnly date, int totalCases, int totalDeaths, int totalRecovered)
+        public void UpdateSummary(DateTime date, int totalCases, int totalDeaths, int totalRecovered)
         {
             if (date < LastReceivedDate)
             {

@@ -15,4 +15,8 @@
     <Folder Include="Configurations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WorldIndexesComparer.Application\WorldIndexesComparer.Application.csproj" />
+  </ItemGroup>
+
 </Project>

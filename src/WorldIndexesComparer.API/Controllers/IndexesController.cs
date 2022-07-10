@@ -4,7 +4,7 @@ namespace WorldIndexesComparer.API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/indexes")]
     public class IndexesController : ControllerBase
     {
         public IndexesController()

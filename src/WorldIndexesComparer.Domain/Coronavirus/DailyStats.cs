@@ -5,7 +5,7 @@ namespace WorldIndexesComparer.Domain.Coronavirus
     {
         public long Id { get; private set; }
         public int SummaryId { get; private set; }
-        public DateOnly Date { get; private set; }
+        public DateTime Date { get; private set; }
         public int Cases { get; private set; }
         public int Deaths { get; private set; }
         public int Recovered { get; private set; }
