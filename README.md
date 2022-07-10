@@ -1,5 +1,5 @@
 # world-indexes-comparer
-An comprehensive world indexes comparer mainly focused on providing economic indexes comparison after covid-19 effects.
+An comprehensive (not yet) world indexes comparer mainly focused on providing economic indexes comparison after covid-19 effects.
 
 ### About
 This is a project created with the solely purpose of applying several topics that were presented during the [Software Engineering graduate program](https://www.unisinos.br/pos/especializacao/engenharia-de-software/hibrido/porto-alegre).
@@ -33,20 +33,21 @@ This is a project created with the solely purpose of applying several topics tha
 - [x] CQRS (Command Query Responsibility Segregation pattern)
 - [x] ASP.NET WebAPI
 - [x] Background workers using [cron expressions](https://github.com/HangfireIO/Cronos)
-- [x] EntityFrameworkCore
+- [x] EntityFrameworkCore as ORM
 - [x] UnitOfWork pattern using [EntityFrameworkCore.DataAccess library](https://github.com/ffernandolima/ef-core-data-access/tree/ef-core-6)
 - [x] [MediatR](https://github.com/jbogard/MediatR)
-- [ ] AutoMapper
-- [ ] FluentValidation
+- [ ] AutoMapper as object-object mapper
+- [ ] Strongly-typed validation rules using FluentValidation
 - [x] MySql
 - [x] Docker (including docker-compose)
-- [ ] Redis
-- [ ] Apache Kafka
+- [ ] Redis as Cache provider
+- [ ] Messaging using Apache Kafka
+- [ ] API Gateway
 - [ ] Unit tests using AAA pattern ([Arrange, Act, Assert](https://docs.microsoft.com/pt-br/visualstudio/test/unit-test-basics?view=vs-2022)): 
 
 ### Getting started
 
-Clone this repository and enter the /src directory
+First you will need NET 6 SDK. Then clone this repository and enter the /src directory
 
 Make sure you have installed and configured docker in your environment. 
 After that, you can run the below commands from the /src/ directory and get started with immediately.
