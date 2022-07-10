@@ -9,7 +9,7 @@ This is a project created with the solely purpose of applying several topics tha
 - [x] Consume and save Countries data in a relational database using a scheduled job.
 - [x] Consume and save Covid data in a relational database using a scheduled job.
 - [ ] Consume and save Inflation data in a relational database using a scheduled job.
-- [ ] Provide API to compare effects after Covid-19 between selected countries.
+- [x] Provide API to compare effects after Covid-19 between selected countries.
 - [ ] Architecture documents like C4 Model and ADRs
 
 ### Current Architecture
