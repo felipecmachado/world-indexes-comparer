@@ -23,6 +23,9 @@ namespace WorldIndexesComparer.BackgroundServices.Workers
             {
                 using var scope = _scopeFactory.CreateScope();
 
+                //var service = scope.ServiceProvider.GetRequiredService<I>();
+
+                // await service.RefreshDataAsync(stoppingToken).ConfigureAwait(continueOnCapturedContext: false);
             }
             catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 {
     public enum Periodicity
     {
+        Unspecified = 0,
         Daily,
         Weekly,
         Monthly,

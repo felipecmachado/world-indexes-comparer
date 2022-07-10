@@ -14,8 +14,11 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
             builder.HasKey(x => x.Id);
 
             // Properties
-            builder.Property(x => x.Name)
+            builder.Property(x => x.Ticker)
                 .IsRequired()
+                .HasMaxLength(30);
+
+            builder.Property(x => x.Description)
                 .HasMaxLength(256);
 
             builder.Property(x => x.Periodicity)

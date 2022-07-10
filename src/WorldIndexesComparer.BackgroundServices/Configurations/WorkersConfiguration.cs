@@ -31,7 +31,7 @@ namespace WorldIndexesComparer.BackgroundServices.Configurations
             {
                 c.TimeZoneInfo = TimeZoneInfo.Local;
                 c.ShouldRunOnStartup = true;
-                c.CronExpression = @"*/1 * * * *"; // every 5 minutes
+                c.CronExpression = @"*/1 * * * *"; // every 1 minutes
             });
 
             //services.AddScheduledJob<ConsumerPriceIndexDataCollectionWorker>(c =>
