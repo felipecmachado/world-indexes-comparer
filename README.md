@@ -28,10 +28,10 @@ This is a project created with the solely purpose of applying several topics tha
 - [x] ASP.NET WebAPI
 - [x] Background workers using [cron expressions](https://github.com/HangfireIO/Cronos)
 - [x] EntityFrameworkCore
-- [ ] UnitOfWork pattern using [EntityFrameworkCore.DataAccess library](https://github.com/ffernandolima/ef-core-data-access/tree/ef-core-6)
-- [x] FluentValidation
+- [x] UnitOfWork pattern using [EntityFrameworkCore.DataAccess library](https://github.com/ffernandolima/ef-core-data-access/tree/ef-core-6)
 - [x] [MediatR](https://github.com/jbogard/MediatR)
 - [ ] AutoMapper
+- [ ] FluentValidation
 - [x] MySql
 - [x] Docker (including docker-compose)
 - [ ] Redis
