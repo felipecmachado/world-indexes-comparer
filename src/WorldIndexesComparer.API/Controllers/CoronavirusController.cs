@@ -1,44 +1,54 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WorldIndexesComparer.Application.Queries;
+using WorldIndexesComparer.Application.Results;
 
 namespace WorldIndexesComparer.API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/coronavirus")]
     public class CoronavirusController : ControllerBase
     {
-        public CoronavirusController()
+        private readonly IMediator _mediator;
+
+        public CoronavirusController(IMediator mediator)
         {
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet("summaries/{country}", Name = "GetCountrySummaryAsync")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SummaryByCountryResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public Task<string> GetCountrySummaryAsync(string country)
+        public async Task<IActionResult> GetCountrySummaryAsync(string country)
         {
-            throw new NotImplementedException();
+            var response = await _mediator.Send(new GetSummaryByCountryQueryCommand(country));
+
+            if (response is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
         }
 
-        [HttpGet("history/{country}", Name = "GetCountryHistoryAsync")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [HttpGet("summary", Name = "GetGlobalSummaryAsync")]
+        [ProducesResponseType(typeof(GlobalSummaryResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public Task<string> GetCountryHistoryAsync(string country)
+        public async Task<IActionResult> GetGlobalSummaryAsync()
         {
-            throw new NotImplementedException();
-        }
+            var response = await _mediator.Send(new GetGlobalSummaryQueryCommand());
 
-        [HttpGet("history", Name = "GetGlobalHistoryAsync")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public Task<string> GetGlobalHistoryAsync()
-        {
-            throw new NotImplementedException();
+            if (response is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.UnitOfWork.Interfaces;
 using MediatR;
+using WorldIndexesComparer.Domain;
 using WorldIndexesComparer.Domain.Coronavirus;
 using WorldIndexesComparer.Domain.Coronavirus.Commands;
 using WorldIndexesComparer.Domain.Countries;
@@ -8,7 +9,7 @@ using WorldIndexesComparer.Infrastructure.Extensions;
 
 namespace WorldIndexesComparer.Application.Countries.CommandHandlers
 {
-    public class UpdateCoronavirusSummaryCommandHandler : IRequestHandler<UpdateCoronavirusSummaryCommand, bool>, IDisposable
+    public class UpdateCoronavirusSummaryCommandHandler : ICommandHandler<UpdateCoronavirusSummaryCommand, bool>, IDisposable
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMediator _mediator;
@@ -25,7 +26,7 @@ namespace WorldIndexesComparer.Application.Countries.CommandHandlers
 
             var summary = request.Summary;
 
-            summary.UpdateSummary(DateOnly.FromDateTime(request.Date), request.Active, request.Deaths, request.Recovered);
+            summary.UpdateSummary(request.Date, request.Active, request.Deaths, request.Recovered);
 
             repo.Update(summary);
   

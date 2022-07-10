@@ -25,6 +25,9 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
                 .WithOne()
                 .IsRequired(false);
 
+            builder.HasIndex(x => x.CountryId)
+                 .IsUnique();
+
             builder.ToTable("CoronavirusSummaries");
         }
     }

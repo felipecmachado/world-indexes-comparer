@@ -24,7 +24,7 @@ namespace WorldIndexesComparer.Application.Coronavirus.EventHandlers
             {
                 summary = Summary.New(
                     countryId: notification.Country.Id,
-                    code: notification.Country.CCA2,
+                    code: notification.Country.Slug,
                     population: notification.Country.Population);
 
                 repo.Add(summary);

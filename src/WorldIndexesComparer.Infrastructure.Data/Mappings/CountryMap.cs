@@ -27,6 +27,9 @@ namespace WorldIndexesComparer.Infrastructure.Data.Mappings
             builder.Property(x => x.Population)
                 .IsRequired();
 
+            builder.HasIndex(x => x.CCA2)
+                 .IsUnique();
+
             builder.ToTable("Countries");
         }
     }

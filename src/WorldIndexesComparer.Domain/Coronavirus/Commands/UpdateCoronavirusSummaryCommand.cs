@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace WorldIndexesComparer.Domain.Coronavirus.Commands
+﻿namespace WorldIndexesComparer.Domain.Coronavirus.Commands
 {
-    public class UpdateCoronavirusSummaryCommand : IRequest<bool>
+    public class UpdateCoronavirusSummaryCommand : ICommand<bool>
     {
         public Summary Summary { get; set; }
         public int Confirmed { get; set; }
