@@ -20,6 +20,8 @@ This is a project created with the solely purpose of applying several topics tha
 
 ### OpenAPI Specification
 
+![image](https://user-images.githubusercontent.com/2963750/178127876-d632c805-d8e6-4610-91ed-71831cd9e2d6.png)
+
 ### Technologies and patterns used
 
 - [x] [NET 6](https://docs.microsoft.com/pt-br/dotnet/core/whats-new/dotnet-6)
