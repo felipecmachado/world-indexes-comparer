@@ -46,6 +46,8 @@ This is a project created with the solely purpose of applying several topics tha
 
 ### Getting started
 
+Clone this repository and enter the /src directory
+
 Make sure you have installed and configured docker in your environment. 
 After that, you can run the below commands from the /src/ directory and get started with immediately.
 
@@ -53,6 +55,21 @@ After that, you can run the below commands from the /src/ directory and get star
 docker-compose build
 docker-compose up
 ```
+
+Enter the Background.Services directory and start the project by running dotnet run 
+```powershell
+cd WorldIndexesComparer.BackgroundServices
+dotnet build
+dotnet run
+```
+Now enter the API directory and start the project by running dotnet run  
+```powershell
+cd ..\WorldIndexesComparer.API
+dotnet build
+dotnet run
+```
+Navigate to the https://localhost:7227/swagger or http://localhost:5227  
+It is suggested to wait a few minutes, so real data can be collected.
 
 ### Read further
 
